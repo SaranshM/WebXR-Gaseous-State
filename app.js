@@ -1,5 +1,5 @@
 import * as THREE from './libs/three/three.module.js';
-import { VRButton } from './libs/three/jsm/VRButton.js';
+import { VRButton } from './VRButton.js';
 import { XRControllerModelFactory } from './libs/three/jsm/XRControllerModelFactory.js';
 import { BoxLineGeometry } from './libs/three/jsm/BoxLineGeometry.js';
 import { Stats } from './libs/stats.module.js';
@@ -11,7 +11,7 @@ class App{
 		const container = document.createElement( 'div' );
 		document.body.appendChild( container );
         
-        // this.clock = new THREE.Clock();
+        this.clock = new THREE.Clock();
 
         // create camera
 		this.camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 100 );
@@ -100,7 +100,7 @@ class App{
     
     setupXR(){
         this.renderer.xr.enabled = true
-        document.body.appendChild(VRButton.createButton(this.renderer))
+        const button = new VRButton( this.renderer );
     }
     
     resize(){
